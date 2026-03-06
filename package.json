@@ -1,0 +1,65 @@
+{
+	"name": "types-keyboardevent",
+	"version": "0.0.0",
+	"description": "TypeScript types for the KeyboardEvent code and key values.",
+	"author": "Jonathan Neal <jonathantneal@hotmail.com> (https://jonneal.dev)",
+	"homepage": "https://github.com/jsxtools/types-keyboardevent",
+	"license": "MIT-0",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/types.d.ts",
+			"default": "./dist/types.js"
+		},
+		"./KeyboardEventCode": {
+			"types": "./dist/KeyboardEventCode.d.ts",
+			"default": "./dist/KeyboardEventCode.js"
+		},
+		"./KeyboardEventKey": {
+			"types": "./dist/KeyboardEventKey.d.ts",
+			"default": "./dist/KeyboardEventKey.js"
+		}
+	},
+	"main": "./dist/types.js",
+	"types": "./dist/types.d.ts",
+	"files": ["dist"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jsxtools/types-keyboardevent.git"
+	},
+	"bugs": "https://github.com/jsxtools/types-keyboardevent/issues",
+	"sideEffects": false,
+	"keywords": ["typescript", "types", "dom", "keyboard", "keyboardevent", "keyboardevent.code", "keyboardevent.key", "web"],
+	"scripts": {
+		"build": "npm run build:generate && npm run build:tsc",
+		"build:generate": "node scripts/generate.js",
+		"build:tsc": "tsc --pretty",
+		"clean": "rm -rf dist coverage *.tsbuildinfo",
+		"format": "dprint fmt",
+		"format:check": "dprint check",
+		"lint": "biome lint",
+		"lint:fix": "biome lint --write",
+		"prepublishOnly": "npm run clean && npm run build && npm test",
+		"test": "npm run test:node && npm run test:chromium && npm run test:firefox && npm run test:webkit",
+		"test:chromium": "vitest run --browser.name=chromium",
+		"test:firefox": "vitest run --browser.name=firefox",
+		"test:node": "vitest run --config vitest.node.config.ts",
+		"test:webkit": "vitest run --browser.name=webkit",
+		"type-check": "tsc --project tsconfig.type-tests.json",
+		"vitest": "vitest"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.6",
+		"@biomejs/js-api": "4.0.0",
+		"@biomejs/wasm-nodejs": "2.4.6",
+		"@types/node": "22.19.13",
+		"@vitest/browser-playwright": "4.0.18",
+		"@vitest/coverage-istanbul": "4.0.18",
+		"@vitest/ui": "4.0.18",
+		"dprint": "0.52.0",
+		"dprint-node": "1.0.8",
+		"playwright": "1.58.2",
+		"typescript": "5.9.3",
+		"vitest": "4.0.18"
+	}
+}
